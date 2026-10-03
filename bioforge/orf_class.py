@@ -1,13 +1,9 @@
-count = 1
-
 class ORF:
 
-    annotation = 0 # متغیر کلاسی برای ساخت ID
+    # کلاسی برای ساخت ID
     def __init__(self,codons ,protein ,strand ,frame ,start_pos ,is_complete ):
-        self.id = ORF.annotation
-        self.annotation = f"BGF_00{count}"
-        count += 1
-        ORF.annotation += 1
+        self.id = anotation(orf)
+        # ORF.annotation += 1
         self.codons = codons
         self.protein = protein
         self.strand = strand
@@ -18,7 +14,7 @@ class ORF:
 
     def orf_make_real(self): 
         return {
-            "ID":self.annotation,
+            "ID":self.id,
             "codons": self.codons,
             "protein": self.protein,
             "strand": self.strand,
