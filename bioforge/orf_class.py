@@ -1,3 +1,5 @@
+from annotation import annotation
+
 class ORF:
 
     # کلاسی برای ساخت ID
