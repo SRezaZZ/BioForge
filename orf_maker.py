@@ -1,7 +1,7 @@
 # نیازمند ورودی یک لیست به شکل مجموعه تاپلها (rna-string , strand-string : forward/reverse_complement(rc))
 from translator import translate
 from orf_class import ORF
-from reza import  R_S_LIST
+from dna import  R_S_LIST
 
 # solution_for_input = """
 # my_list_of_tuples = [("rna1" , "strand1"),("rna2" , "strand2"),("rna3" , "strand3")]
