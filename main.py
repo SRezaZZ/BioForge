@@ -1,5 +1,5 @@
 from parser import load_fasta
-from dna_operation import DNASequence
+from dna_operations import DNASequence
 from ORF import orf_class
 from ORF import orf_maker
 from ORF import translator
