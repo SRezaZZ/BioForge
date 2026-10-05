@@ -1,9 +1,15 @@
+from parser import load_fasta
+from dna_operation import DNASequence
+from ORF import orf_class
+from ORF import orf_maker
+from ORF import translator
+from Filter import filters
+from output import annotation
 import argparse
 import os
-from filtering import filter
-from log import log
-from report import report
-from fasta import fastaparsing
+from output import log
+from output import report
+
 
 def main() : # CLI
     parser = argparse.ArgumentParser()
@@ -15,5 +21,9 @@ def main() : # CLI
     reportfile = os.path.join(args.out, "report.txt") # چسباندن مسیر فایل خروجی ریپورت
     log(logfile) # دادن مسیر فایل لاگ به ماژول
     report(reportfile) # دادن مسیر فایل ریپورت به ماژول
-    fastaparsing(args.input) # فایل input جهت ارجاع به تابرع یا فایل فستاپارسنگ
-    filter(args.min_length) # جهت ارجاع min-lenght به تابع یا فایل فیلترینگedit
+    load_fasta(args.input) # فایل input جهت ارجاع به تابرع یا فایل فستاپارسنگ
+    filters(args.min_length) # جهت ارجاع min-lenght به تابع یا فایل فیلترینگedit
+
+
+if __name__ == "__main__":
+    main()
