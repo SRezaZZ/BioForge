@@ -1,68 +1,61 @@
-import logging 
+import logging
+
 
 def load_fasta():
-   with open("data_input/input.txt", "r", encoding = "utf8") as file_obj: 
-         file = file_obj.read().splitlines()
-     
-         if not file:
-            raise ValueError("File is empty")
- 
-         dict = {}
+    with open("data_input/input.txt", "r", encoding="utf8") as file_obj:
+        file_lines = file_obj.read().splitlines()
 
-         header_found = False
+    if not file_lines:
+        raise ValueError("File is empty")
 
-         for i in range(len(file)):
-          
-          if file[i] == "":
+    records = {}
+    header_found = False
+
+    for i in range(len(file_lines)):
+
+        if file_lines[i] == "":
             continue
-         
-          elif file[i].startswith(">"):
-          
-           header = file[i][1:]
-        
-         parts = header.split(maxsplit=1)
 
-         record_id = parts[0]
-       
-         if len(parts) > 1:
-          description = parts[1]
-         else:
-          description = ""
-        
-         if record_id in dict:
-             logging.warning("Duplicate ID: " + record_id)
-             continue
+        elif file_lines[i].startswith(">"):
 
-         header_found = True
+            header = file_lines[i][1:]
+            parts = header.split(maxsplit=1)
 
-         sequence = ""
+            record_id = parts[0]
 
-         for j in range(i + 1, len(file)):
+            if len(parts) > 1:
+                description = parts[1]
+            else:
+                description = ""
 
-            if file[j].startswith(">"):
-               break
+            if record_id in records:
+                logging.warning("Duplicate ID: " + record_id)
+            else:
+                header_found = True
+                sequence = ""
 
-            if file[j] == "":
-               continue
-             
-            sequence += file[j].upper()
+                for j in range(i + 1, len(file_lines)):
 
-            if sequence == "":
-               raise ValueError("header has no sequence")
-            
-            dict[record_id] = sequence
+                    if file_lines[j].startswith(">"):
+                        break
 
-         #if i + 1 >= len(file) or file[i + 1] == "":
-            #raise ValueError("header has no sequence")
-        
-         #dict[record_id] = file[i+1].upper()
+                    if file_lines[j] == "":
+                        continue
 
-         else:
-          if not header_found:
+                    sequence += file_lines[j].upper()
+
+                if sequence == "":
+                    raise ValueError("Header has no sequence")
+
+                records[record_id] = {
+                    "description": description,
+                    "sequence": sequence,
+                }
+
+        elif not header_found:
             raise ValueError("Sequence before header")
-          
-          continue
 
- return dict
+    return records
 
-load_fasta()
+result = load_fasta()
+print(result)
