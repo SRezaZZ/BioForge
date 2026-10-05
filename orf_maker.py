@@ -71,8 +71,8 @@ def orf_maker_construction(rna, strand):
                     is_complete,
                     )
 
-            orfs.append(orfs.append(orf_object)) # شی واقعی و نمایش با __reper__
-            # orfs.append(orf_object.orf_make_real()) # ساخت دیکشنری از اشیا نه واقعا این که خود شی باشه
+            # orfs.append(orfs.append(orf_object)) # شی واقعی و نمایش با __reper__
+            orfs.append(orf_object.orf_make_real()) # ساخت دیکشنری از اشیا نه واقعا این که خود شی باشه
             i = j + 3 # به بعد از اخرین استاپ کدون رفته و مابقی فریم را برای پیدا کردن orf جدید بررس می کنیم 
 
     return orfs 
@@ -84,3 +84,10 @@ def orf_maker_construction(rna, strand):
 
 last_output = orf_maker_inputs(R_S_LIST)
 print(last_output)
+
+for i in last_output:
+    for key in i.keys(): #برای ورودی صادق
+        if key == "codons" :
+            print(i["codons"])
+    # print(type(i))
+    # break

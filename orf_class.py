@@ -21,26 +21,26 @@ class ORF:
         self.start_pos = start_pos
         self.is_complete = is_complete
 
-    def __repr__(self):
-        return (
-            f"ORF("
-            f"ID = {self.id} , "
-            f"codons = {self.codons} , "
-            f"protein = {self.protein} , "
-            f"strand = {self.strand} , "
-            f"frame = {self.frame} , "
-            f"start_pos = {self.start_pos} , "
-            f"is_complete = {self.is_complete}  "
-            f")"
-        )
+    # def __repr__(self):
+    #     return (
+    #         f"ORF("
+    #         f"ID = {self.id} , "
+    #         f"codons = {self.codons} , "
+    #         f"protein = {self.protein} , "
+    #         f"strand = {self.strand} , "
+    #         f"frame = {self.frame} , "
+    #         f"start_pos = {self.start_pos} , "
+    #         f"is_complete = {self.is_complete}  "
+    #         f")"
+    #     )
     
-    # def orf_make_real(self): 
-    #     return {
-    #         "ID":self.annotation,
-    #         "codons": self.codons,
-    #         "protein": self.protein,
-    #         "strand": self.strand,
-    #         "frame": self.frame,
-    #         "start_pos": self.start_pos,
-    #         "is_complete": self.is_complete,
-    #     }
+    def orf_make_real(self): 
+        return {
+            "ID":self.id,
+            "codons": self.codons,
+            "protein": self.protein,
+            "strand": self.strand,
+            "frame": self.frame,
+            "start_pos": self.start_pos,
+            "is_complete": self.is_complete,
+        }
