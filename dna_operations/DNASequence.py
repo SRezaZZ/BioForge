@@ -1,5 +1,5 @@
 from datetime import datetime
-class DnaSequence:
+class DNASequence:
     def __init__(self, sequence):
         self.sequence = [seq.upper() for seq in list(sequence.values())]
         self.valid_bases = {"A", "T", "C", "G"}
