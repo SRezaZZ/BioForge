@@ -9,6 +9,7 @@ import argparse
 import os
 from output import log
 from output import report
+from exceptions import BioForgeError
 
 
 def main() : # CLI
