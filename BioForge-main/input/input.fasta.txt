@@ -1,5 +1,0 @@
->seq001 organism=E_coli sample=A
-ATGCTTTCATAG
-
->seq002 organism=Human sample=B
-CCCATGGGGTAA
