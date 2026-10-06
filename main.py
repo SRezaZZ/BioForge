@@ -10,6 +10,7 @@ import os
 from output import log
 from output import report
 from exceptions import BioForgeError
+import sys
 
 
 def main() : # CLI
@@ -27,4 +28,8 @@ def main() : # CLI
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BioForgeError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
